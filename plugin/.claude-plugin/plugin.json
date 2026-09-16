@@ -1,0 +1,20 @@
+{
+  "name": "videopip",
+  "version": "0.1.0",
+  "description": "Make product videos, countdowns, Shorts and Reels from a plain-language brief. Requires `pip install \"videopip[mcp]\"`.",
+  "author": {
+    "name": "Zain",
+    "url": "https://github.com/zaindev97"
+  },
+  "homepage": "https://github.com/zaindev97/videopip",
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "ffmpeg",
+    "youtube",
+    "shorts",
+    "tts",
+    "motion-graphics"
+  ],
+  "repository": "https://github.com/zaindev97/videopip"
+}

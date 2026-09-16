@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "videopip": {
+      "command": "videopip-mcp"
+    }
+  }
+}

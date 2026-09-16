@@ -1,0 +1,44 @@
+# VideoPip project: single-product vertical Short / Reel / TikTok (9:16)
+version: 1
+name: my-short
+clips_dir: clips
+
+clips:
+  c1: { file: 1.mp4, safe: [[0.5, 30.0]] }
+
+voice:
+  engine: edge
+  voice: en-US-AndrewMultilingualNeural
+
+sfx:
+  whoosh: builtin:whoosh
+  cold_open: builtin:impact
+
+style:
+  numbering: none
+  first_reveal: 1.0
+
+intro:
+  enabled: false          # shorts start straight on the product
+
+segments:
+  - title: THIS GADGET IS GENIUS
+    label: Brand Product Name
+    clips: [c1]
+    vo: >-
+      You need to see this. It's a tiny gadget that fixes an annoying everyday problem in
+      seconds. Here's how it works, and here's the one catch. Link's in my bio.
+    overlays:
+      - { template: badge, data: { text: "UNDER $20" }, at: 2.0, duration: 3.0, position: top-center }
+
+outro:
+  enabled: false
+
+output:
+  path: output/short.mp4
+  format: vertical
+
+shorts: []
+
+thumbnail:
+  enabled: false

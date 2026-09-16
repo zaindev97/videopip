@@ -1,0 +1,26 @@
+{
+  "name": "videopip",
+  "owner": {
+    "name": "Zain",
+    "url": "https://github.com/zaindev97"
+  },
+  "metadata": {
+    "description": "AI-driven video pipeline: plain-language brief -> spec -> one-command render."
+  },
+  "plugins": [
+    {
+      "name": "videopip",
+      "source": "./plugin",
+      "description": "Turn a messy video request into a VideoPip project.yaml, preflight it, and hand back one render command.",
+      "version": "0.1.0",
+      "category": "productivity",
+      "keywords": [
+        "video",
+        "ffmpeg",
+        "youtube",
+        "shorts",
+        "tts"
+      ]
+    }
+  ]
+}

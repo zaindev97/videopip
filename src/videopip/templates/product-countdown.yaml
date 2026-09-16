@@ -1,0 +1,96 @@
+# VideoPip project: product review / countdown video (16:9, YouTube)
+# Docs: https://github.com/zaindev97/videopip/blob/main/docs/SPEC.md
+# Render with:  videopip render project.yaml
+version: 1
+name: my-product-video
+clips_dir: clips            # folder holding your source clips
+
+# One entry per source clip. `safe` = time ranges that show the real product
+# (no logo cards, end cards, text screens or other channels' bumpers).
+# Run `videopip analyze clips/` to get suggestions.
+clips:
+  c1: { file: 1.mp4, safe: [[0.5, 30.0]] }
+  c2: { file: 2.mp4, safe: [[0.5, 25.0]] }
+  c3: { file: 3.mp4, safe: [[0.5, 28.0]] }
+
+voice:
+  engine: edge                      # edge | openai | elevenlabs | piper | silent
+  voice: en-US-AndrewMultilingualNeural
+  lexicon: {}                       # e.g. { Makita: Mah-KEE-tah }
+
+music:
+  intro: null                       # upbeat track (intro + reveal stingers)
+  body: null                        # calm bed under the voice (loops)
+  volume: 0.38
+
+sfx:
+  whoosh: builtin:whoosh
+  cold_open: builtin:impact
+
+brand:
+  watermark: null                   # transparent PNG logo
+  banner_style: white               # white | neon | dark
+
+style:
+  numbering: ascending              # ascending | countdown | none
+  show_verdict: false
+
+intro:
+  vo: >-
+    Watch this tool do something you've never seen.
+    This one saves you an hour every weekend.
+    Three tools, and I'll tell you which are worth it.
+  shots:
+    - { clip: c1, range: [2.0, 12.0], role: hero }
+    - { clip: c2, range: [3.0, 10.0], role: cue }
+    - { clip: c3, range: [4.0, 12.0], role: cue }
+  subscribe: { source: builtin, at: 12.0, position: bottom-center }
+
+segments:
+  - title: First Product
+    label: Brand First Product
+    clips: [c1]
+    vo: >-
+      Let's kick things off with this one. Describe what it does, who it's for, and one
+      honest con. Keep it conversational, with contractions and a clear verdict. Worth it.
+    link: https://example.com/product-1
+    overlays:
+      - { template: price_tag, data: { label: "Around", price: "$29" }, at: 4.0, duration: 3.0 }
+  - title: Second Product
+    clips: [c2]
+    vo: >-
+      Next up is the second product. Explain the problem it solves, a standout feature,
+      and a con. Worth it.
+    link: https://example.com/product-2
+  - title: Third Product
+    clips: [c3]
+    vo: >-
+      Last one, and it's my favourite. What it does, why it's different, and the catch.
+      Worth it if you do this often.
+    link: https://example.com/product-3
+
+outro:
+  vo: >-
+    So, three tools. If I could only keep one, it's the third. Everything's linked below.
+    Tell me in the comments which one you'd buy. See you in the next one.
+  headline: THANKS FOR WATCHING
+  subline: Links in the description
+
+subscribe_mid: { source: builtin, at: 60.0, position: bottom-right }
+
+output:
+  path: output/video.mp4
+  format: landscape
+  lufs: -14
+
+shorts:
+  - { name: product1, segment: 1, hook: "THIS TOOL IS GENIUS" }
+
+thumbnail:
+  headline: "3 TOOLS WORTH BUYING"
+  subline: "2026"
+
+metadata:
+  title: "3 Tools That Are Actually Worth It"
+  description: "The three tools I'd actually buy, tested and ranked."
+  tags: [tools, gadgets, review]

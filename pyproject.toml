@@ -1,0 +1,66 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "videopip"
+version = "0.1.0"
+description = "AI-driven video pipeline: describe a video in plain words, your AI assistant writes a spec, one command renders it (voiceover, music, SFX, motion graphics, Shorts, thumbnails)."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Zain", email = "zain.xoft@gmail.com" }]
+keywords = ["video", "video-editing", "ffmpeg", "ai", "mcp", "mcp-server", "claude", "claude-code", "tts", "youtube", "shorts", "reels", "tiktok", "product-video", "motion-graphics", "automation"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Video :: Non-Linear Editor",
+  "Environment :: Console",
+]
+dependencies = [
+  "pydantic>=2.6",
+  "typer>=0.12",
+  "rich>=13",
+  "pyyaml>=6",
+  "pillow>=10",
+  "numpy>=1.24",
+  "opencv-python-headless>=4.8",
+  "edge-tts>=7.0",
+]
+
+[project.optional-dependencies]
+# ffmpeg is downloaded on demand by `videopip setup` when not already on PATH
+ffmpeg = ["static-ffmpeg>=2.5"]
+audio = ["librosa>=0.10"]
+motion = ["playwright>=1.40"]
+mcp = ["mcp>=1.2"]
+openai = ["openai>=1.30"]
+elevenlabs = ["requests>=2.31"]
+piper = ["piper-tts>=1.2"]
+cutout = ["rembg>=2.0"]
+youtube = ["google-api-python-client>=2.100", "google-auth-oauthlib>=1.2"]
+all = [
+  "static-ffmpeg>=2.5", "librosa>=0.10", "playwright>=1.40", "mcp>=1.2",
+  "openai>=1.30", "requests>=2.31",
+  "google-api-python-client>=2.100", "google-auth-oauthlib>=1.2",
+]
+dev = ["pytest>=8"]
+
+[project.scripts]
+videopip = "videopip.cli:app"
+videopip-mcp = "videopip.mcp_server:main"
+
+[project.urls]
+Homepage = "https://github.com/zaindev97/videopip"
+Documentation = "https://github.com/zaindev97/videopip#readme"
+Repository = "https://github.com/zaindev97/videopip"
+Issues = "https://github.com/zaindev97/videopip/issues"
+Changelog = "https://github.com/zaindev97/videopip/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/videopip"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

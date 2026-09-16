@@ -1,0 +1,28 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.pytest-out/
+
+# videopip
+.videopip-work/
+output/
+videopip-demo/
+_sheets/
+*.mov
+
+# editors / os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# never commit credentials
+client_secret*.json
+*token*.json
+.env
